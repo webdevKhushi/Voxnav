@@ -1,16 +1,43 @@
-# React + Vite
+## VoxNav
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Voice-first navigation assistant that lets people control web apps entirely by speaking — no clicks, no typing. Built for the [AssemblyAI Voice Agent Hackathon](https://lablab.ai) on lablab.ai.
 
-Currently, two official plugins are available:
+## Problem
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Visually impaired and motor-disabled users often struggle with interfaces built around clicks and typing. Screen readers help with reading content, but true hands-free control is still missing.
 
-## React Compiler
+## Solution
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+VoxNav lets a user speak a command — "what time is it," "open settings," "increase text size" — and the app transcribes it, matches it to an action, performs it, and speaks the result back out loud.
 
-## Expanding the Oxlint configuration
+## How it works
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+1. AssemblyAI's real-time transcription captures the spoken command.
+2. A lightweight intent-matching layer maps the transcript to an action.
+3. The app performs the action and replies via text-to-speech.
+
+## Tech stack
+
+- **Frontend:** React
+- **Backend:** Express (keeps the AssemblyAI API key server-side)
+- **Speech-to-text:** AssemblyAI API
+- **Text-to-speech:** Web Speech API (browser built-in)
+
+## Status
+
+- [x] Static frontend UI — mic button, transcript panel, response panel, command list, text-size control
+- [ ] AssemblyAI integration (real transcription)
+- [ ] Intent-matching logic
+- [ ] Text-to-speech responses
+- [ ] Deploy live
+
+## Running locally
+
+```bash
+npm install
+npm run dev
+```
+
+## Impact
+
+Supports accessibility — a key but underused voice AI use case — and shows how AssemblyAI can power intelligent, actionable voice experiences, in line with the hackathon's theme: "Turn speech into intelligent action."
