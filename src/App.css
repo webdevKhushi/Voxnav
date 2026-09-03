@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
 }
 
@@ -84,6 +84,17 @@ body {
   color: #8b93ab;
   font-size: 0.95em;
   margin: 0;
+}
+
+.error-text {
+  color: #e0725f;
+  font-size: 0.9em;
+  margin: 0;
+}
+
+.mic-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.85;
 }
 
 .panel {
@@ -173,4 +184,220 @@ body {
 
 .text-size button:hover {
   border-color: #f0a868;
+} */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #12172b;
+}
+
+.app {
+  min-height: 100vh;
+  background: #12172b;
+  color: #f5f3ee;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  padding: 2.5rem 1.5rem 3rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+  color: #8b93ab;
+  font-size: 0.95em;
+  margin: 0 0 0.5rem;
+}
+
+.hero h1 {
+  font-size: 2.75em;
+  font-weight: 600;
+  margin: 0;
+  color: #f5f3ee;
+}
+
+.tagline {
+  color: #a9a3d6;
+  font-size: 1.05em;
+  margin: 0.5rem 0 0;
+}
+
+.mic-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mic-button {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  border: none;
+  background: #f0a868;
+  color: #12172b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 0 0 rgba(240, 168, 104, 0.5);
+  transition: box-shadow 0.3s ease, transform 0.15s ease;
+}
+
+.mic-button:hover {
+  transform: scale(1.03);
+}
+
+.mic-button.listening {
+  animation: pulseRing 1.4s ease-out infinite;
+}
+
+@keyframes pulseRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(240, 168, 104, 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 26px rgba(240, 168, 104, 0);
+  }
+}
+
+.mic-hint {
+  color: #8b93ab;
+  font-size: 0.95em;
+  margin: 0;
+}
+
+.error-text {
+  color: #e0725f;
+  font-size: 0.9em;
+  margin: 0;
+}
+
+.mic-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+.panel {
+  width: 100%;
+  background: #1a1f38;
+  border: 1px solid #2a3050;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.panel-label {
+  font-size: 0.8em;
+  color: #8b93ab;
+  margin: 0 0 0.35rem;
+  letter-spacing: 0.02em;
+}
+
+.panel-text {
+  font-size: 1.15em;
+  margin: 0;
+  color: #f5f3ee;
+}
+
+.panel-response .panel-text {
+  color: #f0a868;
+}
+
+.commands {
+  margin-top: 2.5rem;
+}
+
+.commands h2 {
+  font-size: 1.15em;
+  font-weight: 500;
+  color: #f5f3ee;
+  margin-bottom: 0.75rem;
+}
+
+.commands ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.commands li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 1rem;
+  background: #1a1f38;
+  border-radius: 10px;
+  font-size: 0.95em;
+}
+
+.phrase {
+  color: #f5f3ee;
+}
+
+.result {
+  color: #8b93ab;
+  text-align: right;
+}
+
+.text-size {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+  color: #8b93ab;
+  font-size: 0.9em;
+}
+
+.text-size button {
+  background: #1a1f38;
+  border: 1px solid #2a3050;
+  color: #f5f3ee;
+  border-radius: 8px;
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.text-size button:hover {
+  border-color: #f0a868;
+}
+
+.wake-word {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.wake-toggle {
+  background: #1a1f38;
+  border: 1px solid #2a3050;
+  color: #f5f3ee;
+  border-radius: 10px;
+  padding: 0.65rem 1.1rem;
+  font-size: 0.9em;
+  cursor: pointer;
+  width: 100%;
+}
+
+.wake-toggle.active {
+  border-color: #f0a868;
+  color: #f0a868;
+}
+
+.wake-note {
+  color: #6f6a99;
+  font-size: 0.8em;
+  margin: 0.5rem 0 0;
+  line-height: 1.4;
 }
