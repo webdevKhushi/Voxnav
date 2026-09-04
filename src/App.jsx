@@ -87,6 +87,15 @@ export default function App() {
       return;
     }
 
+    // Mobile browsers only allow speechSynthesis to play if it's triggered
+    // directly inside a real user tap — not after async work like an API
+    // call. Speaking an empty utterance here, synchronously, unlocks audio
+    // for the rest of this session.
+    if (window.speechSynthesis) {
+      const unlock = new SpeechSynthesisUtterance("");
+      window.speechSynthesis.speak(unlock);
+    }
+
     setError("");
     setTranscript("");
     setResponse("");
@@ -323,7 +332,7 @@ export default function App() {
               onClick={() => setWakeWordEnabled((v) => !v)}
               aria-pressed={wakeWordEnabled}
             >
-              {wakeWordEnabled ? " Always listening — say \"Hey VoxNav\"" : "Enable always-listening mode"}
+              {wakeWordEnabled ? "🔴 Always listening — say \"Hey VoxNav\"" : "Enable always-listening mode"}
             </button>
             <p className="wake-note">
               Runs locally in your browser. No audio is sent anywhere until the wake phrase is heard.
