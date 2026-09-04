@@ -36,8 +36,6 @@ function actionToResponse(action) {
       const now = new Date();
       return `It's ${now.getHours()}:${String(now.getMinutes()).padStart(2, "0")}.`;
     }
-    case "open_settings":
-      return "Opening settings.";
     case "increase_text":
       return "__INCREASE_TEXT__";
     case "decrease_text":
