@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import "./App.css";
 
-const SERVER_URL = "http://localhost:5050";
+const SERVER_URL = "https://voxnav.onrender.com";
 const CONFIDENCE_THRESHOLD = 0.85;
 // "VoxNav" isn't a real word, so speech recognition transcribes it very
 // inconsistently ("box now", "whats now", "vox nav", etc). Rather than chase
@@ -213,14 +213,18 @@ export default function App() {
 
       // If we're currently waiting on a yes/no confirmation, handle that first.
       if (pendingConfirmation) {
-        const said = text.toLowerCase();
-        if (said.includes("yes") || said.includes("yeah") || said.includes("correct")) {
-          await runAction(pendingConfirmation.text);
+        const said = text.toLowerCase().replace(/[^a-z\s]/g, "").trim();
+        console.log("Confirmation reply heard:", JSON.stringify(said));
+        const isYes = /\b(yes|yeah|yep|correct|right|sure)\b/.test(said);
+        if (isYes) {
+          const toRun = pendingConfirmation.text;
+          setPendingConfirmation(null);
+          await runAction(toRun);
         } else {
+          setPendingConfirmation(null);
           setResponse("Okay, cancelled. Go ahead and try again.");
           speak("Okay, cancelled. Go ahead and try again.");
         }
-        setPendingConfirmation(null);
         return;
       }
 
@@ -321,7 +325,7 @@ export default function App() {
               onClick={() => setWakeWordEnabled((v) => !v)}
               aria-pressed={wakeWordEnabled}
             >
-              {wakeWordEnabled ? " Always listening — say \"Hey VoxNav\"" : "Enable always-listening mode"}
+              {wakeWordEnabled ? "🔴 Always listening — say \"Hey VoxNav\"" : "Enable always-listening mode"}
             </button>
             <p className="wake-note">
               Runs locally in your browser. No audio is sent anywhere until the wake phrase is heard.
