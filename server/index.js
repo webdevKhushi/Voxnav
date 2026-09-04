@@ -71,7 +71,7 @@ app.get("/api/transcribe/:id", async (req, res) => {
   }
 });
 
-const VALID_ACTIONS = ["get_time", "open_settings", "increase_text", "decrease_text"];
+const VALID_ACTIONS = ["get_time", "increase_text", "decrease_text"];
 
 app.post("/api/intent", async (req, res) => {
   try {

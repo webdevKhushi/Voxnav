@@ -15,8 +15,8 @@ const SpeechRecognitionAPI =
 
 const COMMANDS = [
   { phrase: "\"What time is it\"", result: "Speaks the current time" },
-  { phrase: "\"Open settings\"", result: "Navigates to the settings screen" },
   { phrase: "\"Increase text size\"", result: "Makes on-screen text larger" },
+  { phrase: "\"Decrease text size\"", result: "Makes on-screen text smaller" },
   { phrase: "\"Ask me anything\"", result: "e.g. \"What's the capital of France\"" },
 ];
 
@@ -323,7 +323,7 @@ export default function App() {
               onClick={() => setWakeWordEnabled((v) => !v)}
               aria-pressed={wakeWordEnabled}
             >
-              {wakeWordEnabled ? "Always listening — say \"Hey VoxNav\"" : "Enable always-listening mode"}
+              {wakeWordEnabled ? "🔴 Always listening — say \"Hey VoxNav\"" : "Enable always-listening mode"}
             </button>
             <p className="wake-note">
               Runs locally in your browser. No audio is sent anywhere until the wake phrase is heard.
