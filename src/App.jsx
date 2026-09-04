@@ -325,7 +325,7 @@ export default function App() {
               onClick={() => setWakeWordEnabled((v) => !v)}
               aria-pressed={wakeWordEnabled}
             >
-              {wakeWordEnabled ? "🔴 Always listening — say \"Hey VoxNav\"" : "Enable always-listening mode"}
+              {wakeWordEnabled ? "Always listening — say \"Hey VoxNav\"" : "Enable always-listening mode"}
             </button>
             <p className="wake-note">
               Runs locally in your browser. No audio is sent anywhere until the wake phrase is heard.
